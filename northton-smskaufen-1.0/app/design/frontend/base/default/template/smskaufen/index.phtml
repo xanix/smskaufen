@@ -1,0 +1,61 @@
+<?php
+$customerEmail = Mage::getSingleton('customer/session')->getCustomer()->getEmail();
+$smsModel = Mage::getModel('smskaufen/smskaufen');
+$verified = $smsModel->checkAccountVerified($customerEmail);
+if($verified==1):
+?>
+	<div class="category-description">
+	<h1><?php echo $this->__('Account verification')?></h1>
+	<p><?php echo $this->__('Your account is verified.')?></p>
+	</div>
+<?php else: ?>
+	<div class="category-description">
+	
+	<?php $verification_failure = Mage::getSingleton('core/session')->getVerificationphase(); ?>
+	<?php if(empty($verification_failure) || ($verification_failure == 'mobile')): ?>
+		<h1><?php echo $this->__('Account verification')?></h1>
+	    <p><?php echo $this->__('To verify this account, please enter your mobile phone number. Format: 00491763999999')?></p></div>
+	<div class="smskaufen-table">
+		    <div class="enter-smskaufen-card-number">
+			<div class="top-facade"></div>
+			<div class="content">
+			    <form action="<?php echo $this->getUrl('customer/account/accountverification')?>" method="post">
+				<fieldset>
+				<ul class="form-list">
+				    <li>
+					<div class="input-box" style="width:195px;">
+					    <label for="mobile_number"><?php echo $this->__('Mobile Number')?></label>
+					    <div class="input-field"><input type="text" class="input-text" style="width:172px;" id="mobile_number" name="mobile_number"/></div>
+					</div>
+				    </li>
+				</ul><br/>	
+					<div id="save" ><button type="submit" class="form-button button_login" value="<?php echo $this->__('Verify')?>"><span><?php echo $this->__('Verify')?></span></button></div>
+				</fieldset>
+			    </form>
+			</div>
+			<div class="bottom-facade"></div>
+		    </div>
+	<?php else: ?>
+		    <div class="retrieve-smskaufen" id="smskaufen_validation_msg">
+		    <?php $mobile_num = $this->getRequest()->getParam('mobile_number'); ?>
+		    <h1><?php echo $this->__('Account verification')?></h1>
+			<div class="content">
+			    <form action="<?php echo $this->getUrl('customer/account/accountverification')?>" method="post">
+				<fieldset>
+				<ul class="form-list">
+				    <li>
+					<div class="input-box" style="width:195px;">
+					    <label for="mobile_number"><?php echo $this->__('Enter password')?></label>
+					    <div class="input-field"><input type="text" class="input-text" style="width:172px;" id="mobile_code" name="mobile_code"/></div>
+					</div>
+				    </li>
+				</ul><br/>	
+					<div id="save" ><button type="submit" class="form-button button_login" value="<?php echo $this->__('Verify')?>"><span><?php echo $this->__('Verify')?></span></button></div>
+				</fieldset>
+			    </form>
+			</div>
+		    </div>
+	       
+	<?php endif; ?>
+	</div>
+<?php endif; ?>

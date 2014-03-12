@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<menu>
+		<system>
+			<children>
+				<smskaufen translate="title" module="smskaufen">
+					<title>Smskaufen Log</title>
+					<action>smskaufen/adminhtml_smskaufen</action>
+				</smskaufen>
+			</children>
+		</system>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<smskaufen translate="title">
+								<title>Smskaufen Log</title>
+								<sort_order>0</sort_order>
+							</smskaufen>
+							<config>
+							    <children>
+								<smskaufen>
+								    <title>Smskaufen</title>
+								</smskaufen>
+							    </children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+    <name>Northton_Smskaufen</name>
+    <version>1.0</version>
+    <stability>beta</stability>
+    <channel>community</channel>
+    <extends/>
+ <compatible/>
+    <dependencies><required><php><min>1.6.2</min><max>1.6.2</max></php></required></dependencies>
+</package>

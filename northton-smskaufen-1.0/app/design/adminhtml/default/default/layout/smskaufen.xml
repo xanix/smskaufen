@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <smskaufen_adminhtml_smskaufen_index>
+        <reference name="content">
+            <block type="smskaufen/adminhtml_smskaufen" name="smskaufen" />
+        </reference>
+    </smskaufen_adminhtml_smskaufen_index>
+</layout>
